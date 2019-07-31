@@ -1,0 +1,6 @@
+sklearn
+PyQt5
+numpy
+pyro-ppl
+torch
+torchvision

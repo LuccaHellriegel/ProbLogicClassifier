@@ -10,15 +10,28 @@ TODO: Table of Contents
 
 TODO
 
+1. Download repo and open the folder in the command line
+
+2. Install dependencies:
+```bash
+pip install -r requirements.txt
+```
+
+3. Go to the src folder and execute gui.py
+```bash
+cd src/
+python3 gui.py
+```
+
 ## Current results
 
 * Hugely dependant on training and test data
-* Not meant as accurate classification but as an augmentation of the users learning process
+* Not meant as accurate classification but as a lightweight augmentation of the users learning process
 
 ## The Pipeline
 
 Components:
-* Learner: Learn a rule to identify defintion-sentences
+* Model: Learn a rule to identify defintion-sentences
 * Classifier: Use rule to classify definitions
 * Generator: Create definition-flashcards based an a predefined schema and present it to the user
 
