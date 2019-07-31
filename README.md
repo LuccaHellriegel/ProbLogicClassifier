@@ -1,12 +1,19 @@
 # ProbabilisticFlashcards
 
-A demo application for what a pipeline for automatically creating flashcards from a text using probabilistic programming could look like. 
+An experimental demo application for what a pipeline for automatically creating flashcards from a text using probabilistic programming could look like. 
 
 TODO: Table of Contents
+
+## Summary
 
 ## How To 
 
 TODO
+
+## Current results
+
+* Hugely dependant on training and test data
+* Not meant as accurate classification but as an augmentation of the users learning process
 
 ## The Pipeline
 
@@ -51,12 +58,16 @@ TODO
 
 TODO
 
+* Using PP is much more lightweight than using full fledged neural nets
 * Randomly and automatically generated educational material makes digital learning more effective
 * Varying the questions breaks up the monotony of flashcards
 
 ### The goal of this application
 
 TODO
+
+* to sketch out an experiment with automatic flashcard generation
+* to show some untapped potential in this area
 
 ### Possible improvements
 
