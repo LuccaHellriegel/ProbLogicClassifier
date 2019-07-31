@@ -62,9 +62,11 @@ def search_rule(n):
         for sentence in sentenceData.train_data:
             if cur_rule(sentence) == sentence["is_example"]: cur_accuracy += 1
         cur_accuracy /= len(sentenceData.train_data)
+        print("Current rule has the training accuracy: "+str(cur_accuracy))
         if cur_accuracy>accuracy:
             rule = cur_rule
             accuracy = cur_accuracy
+    print("Training accuracy of the final rule is: "+str(accuracy))
     return rule
 
 def test_rule(rule):
@@ -75,9 +77,10 @@ def test_rule(rule):
         if choice == sentence["is_example"]: accuracy += 1
         choices.append(choice)
     accuracy /= len(sentenceData.test_data)    
-    print("Final accuracy " + str(accuracy))
-    print("Choices are " + str(choices))    
+    print("Testing accuracy of the final rule is: " + str(accuracy))
+    print("Its choices are: " + str(choices))    
     return accuracy, choices
 
 #TODO use not 1/0 logic but count or separated clauses (?) for percentage ranking
 #TODO penalize for length more? 
+#TODO return accuracy for ui
