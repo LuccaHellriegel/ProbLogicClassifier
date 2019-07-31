@@ -55,23 +55,29 @@ def model():
 
 def search_rule(n):
     accuracy = 0
-    choices = []
     rule = model()
     for i in range(n):
         cur_accuracy = 0
         cur_rule = model()
-        cur_choices = []
-        for sentence in sentenceData.test_data:
-            choice = cur_rule(sentence)
-            if choice == sentence["is_example"]: cur_accuracy += 1
-            cur_choices.append(choice)
-        cur_accuracy /= len(sentenceData.test_data)
+        for sentence in sentenceData.train_data:
+            if cur_rule(sentence) == sentence["is_example"]: cur_accuracy += 1
+        cur_accuracy /= len(sentenceData.train_data)
         if cur_accuracy>accuracy:
             rule = cur_rule
             accuracy = cur_accuracy
-            choices = cur_choices
+    return rule
+
+def test_rule(rule):
+    accuracy = 0
+    choices = []
+    for sentence in sentenceData.test_data:
+        choice = rule(sentence)
+        if choice == sentence["is_example"]: accuracy += 1
+        choices.append(choice)
+    accuracy /= len(sentenceData.test_data)    
     print("Final accuracy " + str(accuracy))
-    print("Choices are " + str(choices))
+    print("Choices are " + str(choices))    
     return accuracy, choices
 
 #TODO use not 1/0 logic but count or separated clauses (?) for percentage ranking
+#TODO penalize for length more? 
