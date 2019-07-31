@@ -1,0 +1,4 @@
+Challenges in natural language processing frequently involve speech recognition, natural language understanding, and natural language generation.
+As machines become increasingly capable, tasks considered to require "intelligence" are often removed from the definition of AI, a phenomenon known as the AI effect.
+Unlike von Neumann model computations, artificial neural networks do not separate memory and processing and operate via the flow of signals through the net connections, somewhat akin to biological networks.
+In contrast to cognitive architectures, cognitive models tend to be focused on a single cognitive phenomenon or process (e.g. list learning), how two or more processes interact (e.g. visual search and decision making), or to make behavioral predictions for a specific task or tool (e.g. how instituting a new software package will affect productivity).

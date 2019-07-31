@@ -1,0 +1,8 @@
+Symbolic artificial intelligence is the term for the collection of all methods in artificial intelligence research that are based on high-level "symbolic" (human-readable) representations of problems, logic and search.
+Machine learning (ML) is the scientific study of algorithms and statistical models that computer systems use in order to perform a specific task effectively without using explicit instructions, relying on patterns and inference instead.
+Robotics is an interdisciplinary branch of engineering and science that includes mechanical engineering, electronic engineering, information engineering, computer science, and others.
+Computer vision is an interdisciplinary scientific field that deals with how computers can be made to gain high-level understanding from digital images or videos.
+The approach is based on the assumption that many aspects of intelligence can be achieved by the manipulation of symbols, an assumption defined as the "physical symbol systems hypothesis" by Allen Newell and Herbert A. Simon in the middle 1960s.
+Robots can be used in many situations and for lots of purposes, but today many are used in dangerous environments (including bomb detection and deactivation), manufacturing processes, or where humans cannot survive (e.g. in space, under water, in high heat, and clean up and containment of hazardous materials and radiation).
+The image data can take many forms, such as video sequences, views from multiple cameras, or multi-dimensional data from a medical scanner.
+In Turing's proposal the various characteristics that could be possessed by a thinking machine and the various implications in constructing one are exposed.
