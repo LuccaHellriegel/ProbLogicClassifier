@@ -3,11 +3,12 @@ import numpy as np
 import torch
 import pyro
 import pyro.distributions as dist
-import data
+from data import SentenceData
 
 tau = 0.3
 noiseParam = np.exp(-1.5)
-value_list = [x for x in range(data.found_max+1)]
+sentenceData = SentenceData()
+value_list = [x for x in range(sentenceData.found_max+1)]
 
 #TODO: make seed variable?
 pyro.set_rng_seed(42)
@@ -22,7 +23,7 @@ def uniform_draw(object_list):
     return object_list[sample]
 
 def sample_pred():
-    feature = uniform_draw(data.features)
+    feature = uniform_draw(sentenceData.features)
     value = uniform_draw(value_list)
     return lambda x : x[feature] == value
 
@@ -47,11 +48,12 @@ def get_formula():
 def model():
     rule = get_formula()
     obs_fn = lambda datum : pyro.sample("obs_fn", 
-                                       dist.Bernoulli(rule(datum) if 1-noiseParam else noiseParam, obs=datum["is_example"]))
-    map(obs_fn,data.train_data)
+                                       dist.Bernoulli(1-noiseParam 
+                                       if rule(datum) else noiseParam, obs=datum["is_example"]))
+    map(obs_fn,sentenceData.train_data)
     return rule
 
-def rejection_sampling(n):
+def search_rule(n):
     accuracy = 0
     choices = []
     rule = model()
@@ -59,18 +61,17 @@ def rejection_sampling(n):
         cur_accuracy = 0
         cur_rule = model()
         cur_choices = []
-        for sentence in data.test_data:
+        for sentence in sentenceData.test_data:
             choice = cur_rule(sentence)
             if choice == sentence["is_example"]: cur_accuracy += 1
             cur_choices.append(choice)
-        cur_accuracy /= len(data.test_data)
+        cur_accuracy /= len(sentenceData.test_data)
         if cur_accuracy>accuracy:
             rule = cur_rule
             accuracy = cur_accuracy
             choices = cur_choices
     print("Final accuracy " + str(accuracy))
     print("Choices are " + str(choices))
-
-rejection_sampling(5000)
+    return accuracy, choices
 
 #TODO use not 1/0 logic but count or separated clauses (?) for percentage ranking
