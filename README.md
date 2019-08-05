@@ -2,13 +2,7 @@
 
 An experimental demo application for what a pipeline for automatically creating flashcards from a text using probabilistic programming could look like. 
 
-TODO: Table of Contents
-
-## Summary
-
 ## How To 
-
-TODO
 
 1. Download repo and open the folder in the command line
 
@@ -17,15 +11,31 @@ TODO
 pip install -r requirements.txt
 ```
 
-3. Go to the src folder and execute gui.py
+3. (Optional) Modify data 
+* all data points are separated by a new line on Linux
+* definition_examples.txt contains defintion training examples
+* definition_negative_examples.txt contains training examples of non-definitions
+* definition_other.txt contains testing data
+* testing accuracy is calculated by assuming that the first half of the testing data is definitions and the second half is not
+
+4. Go to the src folder and execute gui.py
 ```bash
 cd src/
 python3 gui.py
 ```
 
+## Motivation
+
+Flashcards enable us to study using two of the ways that research identified as working best overall: Active Recall and Spaced Repetition. 
+However, there is usually a huge time-cost involved in translating study material to flashcards. Even though creating flashcards yourself gives an additional learning boost, in the presence of thousands of cards this often becomes negligible in my experience.
+
+While software like Anki allows us to efficiently review our cards, there does not exist much software-based assistance for creating new cards.
+That is the reason why I wanted to explore a lightweight pipeline for creating cards from text.
+Restricting the type of cards to definitions is the obvious choice, as there are limited variants of sentences that contain a definition. 
+
 ## Current results
 
-* Hugely dependant on training and test data
+* As expected, classification of definitions is hugely dependant on training and test data
 * Not meant as accurate classification but as a lightweight augmentation of the users learning process
 
 ## The Pipeline
@@ -33,7 +43,7 @@ python3 gui.py
 Components:
 * Model: Learn a rule to identify defintion-sentences
 * Classifier: Use rule to classify definitions
-* Generator: Create definition-flashcards based an a predefined schema and present it to the user
+
 
 ### Learn what a definition is 
 
@@ -82,7 +92,3 @@ TODO
 * to sketch out an experiment with automatic flashcard generation
 * to show some untapped potential in this area
 
-### Possible improvements
-
-* Online learning: Use user-feedback (acceptance of found definition-sentence) to generate new classification rule
-* Automatically identify defined object in the sentence
