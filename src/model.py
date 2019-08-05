@@ -45,7 +45,7 @@ def get_formula():
     else: 
         return sample_conj()
 
-def model():
+def rule_generator():
     rule = get_formula()
     obs_fn = lambda datum : pyro.sample("obs_fn", 
                                        dist.Bernoulli(1-noiseParam 
@@ -55,10 +55,10 @@ def model():
 
 def search_rule(n):
     accuracy = 0
-    rule = model()
+    rule = rule_generator()
     for i in range(n):
         cur_accuracy = 0
-        cur_rule = model()
+        cur_rule = rule_generator()
         for sentence in sentenceData.train_data:
             if cur_rule(sentence) == sentence["is_example"]: cur_accuracy += 1
         cur_accuracy /= len(sentenceData.train_data)
@@ -67,7 +67,7 @@ def search_rule(n):
             rule = cur_rule
             accuracy = cur_accuracy
     print("Training accuracy of the final rule is: "+str(accuracy))
-    return rule
+    return accuracy, rule
 
 def test_rule(rule):
     accuracy = 0
@@ -80,7 +80,3 @@ def test_rule(rule):
     print("Testing accuracy of the final rule is: " + str(accuracy))
     print("Its choices are: " + str(choices))    
     return accuracy, choices
-
-#TODO use not 1/0 logic but count or separated clauses (?) for percentage ranking
-#TODO penalize for length more? 
-#TODO return accuracy for ui
