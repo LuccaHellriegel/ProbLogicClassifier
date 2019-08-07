@@ -92,3 +92,4 @@ TODO
 * to sketch out an experiment with automatic flashcard generation
 * to show some untapped potential in this area
 
+Tau != prob of longer rules but decision prob for longer rules
