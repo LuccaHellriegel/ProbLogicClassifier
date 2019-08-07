@@ -1,6 +1,8 @@
-# ProbabilisticFlashcards
+# ProbLogicClassifier
 
-An experimental demo application for what a pipeline for automatically creating flashcards from a text using probabilistic programming could look like. 
+An experimental application for generating propositional logic expressions using probabilistic programming to classify sentences containing definitions.
+
+Pyro is used for the probabilistic programming and PyQt for the gui. 
 
 ## How To 
 
@@ -24,26 +26,27 @@ cd src/
 python3 gui.py
 ```
 
+### Configuration
+
+* Tau is the probability that while creating the logic expression the program decides to expand the current rule. Increasing this can lead to much longer rules and also takes much longer.
+* Lower bound of rule complexity: Rules with a particular low complexity like 1 (e.g. that a sentence has to contain exactly one "is" to be a definition) are obviously not fit for further usage. Increasing this also increases the lenght of the rule. Complexity is calculated by adding 1 for each predicate and 2 for either conjunction or disjunction.
+* Seed for Pyro: influences the kind of rules we will generate. By always using the same seed we can make the pseudo random process reproducible.
+* Training steps: how many random rules we generate and test.
+
 ## Motivation
 
-Flashcards enable us to study using two of the ways that research identified as working best overall: Active Recall and Spaced Repetition. 
-However, there is usually a huge time-cost involved in translating study material to flashcards. Even though creating flashcards yourself gives an additional learning boost, in the presence of thousands of cards this often becomes negligible in my experience.
+Propositional logic provides a lightweight way to represent models. By using probabilistic programming we can find these models in a moderate amount of time, allowing for easy updating with changing data and usage of the personalized models in assisting users (e.g. in finding definitions for the creation of corresponding flashcards). 
 
-While software like Anki allows us to efficiently review our cards, there does not exist much software-based assistance for creating new cards.
-That is the reason why I wanted to explore a lightweight pipeline for creating cards from text.
-Restricting the type of cards to definitions is the obvious choice, as there are limited variants of sentences that contain a definition. 
+### Results
 
-## Current results
+* As expected, classification of definitions is hugely dependant on the training and test data
+* By using different parameters and data this can be tuned
+* The sample dataset shows that if we are in a highly specialized/personalized environment, we can at least use the resulting model to give us suggestions 
 
-* As expected, classification of definitions is hugely dependant on training and test data
-* Not meant as accurate classification but as a lightweight augmentation of the users learning process
+## Components
 
-## The Pipeline
-
-Components:
 * Model: Learn a rule to identify defintion-sentences
-* Classifier: Use rule to classify definitions
-
+* Classification: Use rule to classify definitions
 
 ### Learn what a definition is 
 
@@ -56,10 +59,6 @@ Components:
 * Use logic expression to classify incoming sentences
 * Present sentences to user for approval and identification of defined object
 
-### Create and present probabilistic flashcards
-
-* Save approved definition 
-* Present definition to user by using one randomly chosen question format (e.g. How is X defined? What is the definition of X?)
 
 ## Background
 
@@ -73,23 +72,8 @@ TODO
 
 TODO
 
-### Why flashcards?
-
-TODO
-
 ### Why probabilistic programming?
 
 TODO
 
-* Using PP is much more lightweight than using full fledged neural nets
-* Randomly and automatically generated educational material makes digital learning more effective
-* Varying the questions breaks up the monotony of flashcards
-
-### The goal of this application
-
-TODO
-
-* to sketch out an experiment with automatic flashcard generation
-* to show some untapped potential in this area
-
-Tau != prob of longer rules but decision prob for longer rules
+Link to probmods

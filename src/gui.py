@@ -8,7 +8,7 @@ app = QApplication([])
 app.setStyle('Fusion')
 
 window = QWidget()
-window.setWindowTitle("ProbabilisticFlashcards")
+window.setWindowTitle("ProbLogicClassifier")
 layout = QVBoxLayout()
 formGroupBox = QGroupBox("Configuration: ")
 formLayout = QFormLayout()
