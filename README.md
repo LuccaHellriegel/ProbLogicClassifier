@@ -1,12 +1,14 @@
 # ProbLogicClassifier
 
+![Screenshot](screen.bmp)
+
 An experimental application for generating propositional logic expressions using probabilistic programming to classify sentences containing definitions.
 
 Pyro is used for the probabilistic programming and PyQt for the gui. 
 
 ## How To 
 
-1. Download repo and open the folder in the command line
+1. Download the repo and open the folder in the command line
 
 2. Install dependencies:
 ```bash
@@ -37,6 +39,8 @@ python3 gui.py
 
 Propositional logic provides a lightweight way to represent models. By using probabilistic programming we can find these models in a moderate amount of time, allowing for easy updating with changing data and usage of the personalized models in assisting users (e.g. in finding definitions for the creation of corresponding flashcards). 
 
+Inspiration: [probmods.org/chapters/lot-learning.html](probmods.org/chapters/lot-learning.html)
+
 ### Results
 
 * As expected, classification of definitions is hugely dependant on the training and test data
@@ -50,7 +54,7 @@ Propositional logic provides a lightweight way to represent models. By using pro
 
 ### Learn what a definition is 
 
-* Extract feature representation from sentences via sklearn's CountVectorizer
+* Extract feature representation (matrix of word counts) from sentences via sklearn's [CountVectorizer](https://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.CountVectorizer.html) 
 * Sample propositional logic expressions based on its ability to explain the training sentences
 * Use rejection sampling to find expression that classifies the test data best
 
@@ -58,22 +62,3 @@ Propositional logic provides a lightweight way to represent models. By using pro
 
 * Use logic expression to classify incoming sentences
 * Present sentences to user for approval and identification of defined object
-
-
-## Background
-
-TODO
-
-### Why propositional logic?
-
-TODO
-
-### Why vectorization?
-
-TODO
-
-### Why probabilistic programming?
-
-TODO
-
-Link to probmods
