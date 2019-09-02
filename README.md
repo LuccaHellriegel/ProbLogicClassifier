@@ -54,7 +54,7 @@ Inspiration: [probmods.org/chapters/lot-learning.html](probmods.org/chapters/lot
 
 ### Learn what a definition is 
 
-* Extract feature representation (matrix of word counts, e.g. the amount of the Word "Word" can be accessed like this: x["Word"]) from sentences via sklearn's [CountVectorizer](https://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.CountVectorizer.html) 
+* Extract feature representation (matrix of word counts, e.g. the amount of the word "Word" in the sentence x would be accessed like this: x["Word"]) from sentences via sklearn's [CountVectorizer](https://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.CountVectorizer.html) 
 * Sample propositional logic expressions based on its ability to explain the training sentences
 * Use rejection sampling to find expression that classifies the test data best
 
